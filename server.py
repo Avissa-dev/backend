@@ -27,9 +27,9 @@ def home():
     conn = get_db_connection()
     with conn.cursor(row_factory=psycopg.rows.dict_row) as cur:
         queries = [
-            f"SELECT * FROM get_direct_routes_geojson({point_1}, {point_2});",
-            f"SELECT * FROM get_one_transfer_routes_geojson({point_1}, {point_2});",
-            f"SELECT * FROM get_two_transfer_routes_geojson({point_1}, {point_2});"
+            "SELECT * FROM get_direct_routes_geojson(%s, %s);",
+            "SELECT * FROM get_one_transfer_routes_geojson(%s, %s);",
+            "SELECT * FROM get_two_transfer_routes_geojson(%s, %s);"
         ]
         function_names = [
             "get_direct_routes_geojson",
@@ -40,7 +40,7 @@ def home():
         rows = []
         while not rows and idx < len(queries) - 1:
             idx += 1
-            cur.execute(queries[idx])
+            cur.execute(queries[idx], (point_1, point_2))
             results = cur.fetchall()
             rows = [obj[function_names[idx]] for obj in results]
     
