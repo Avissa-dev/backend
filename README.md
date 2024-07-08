@@ -63,6 +63,14 @@ Para poder ejecutar el backend se necesita:
  python server.py
 ```
 
+## Documentación
+
+Puede consultar documentación más detallada en la carpeta [documents](https://github.com/Avissa-dev/backend/tree/main/documents), que incluyen:
+
+- Manual de usuario
+- Manual técnico
+- Análisis de licencia
+
 ## Descargas
 
 Puede descargar la última versión del software desde las [releases ](https://github.com/Avissa-dev/backend/releases) de este repositorio.
